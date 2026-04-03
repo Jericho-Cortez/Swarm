@@ -57,4 +57,4 @@ Ce projet met en place un cluster Docker Swarm sur 4 VM Debian pour démontrer l
 ## Références
 
 - Roadmap complète : [docs/ROADMAP DOCKER SWARM.md](docs/ROADMAP%20DOCKER%20SWARM.md)
-- Phases du projet : [docs/Phase 1 Docker Swarm.md](01-architecture.md)
+- Architecture du projet : [docs/01-architecture.md](docs/01-architecture.md)

@@ -13,7 +13,7 @@ docker stack services prod --format "table {{.Name}}\t{{.Replicas}}\t{{.Image}}\
 
 **Attendu** : 5 services, tous READY.
 
-![[Pasted image 20260402163952.png]]
+![État de la stack](images/Phase%207%20Screen/Pasted%20image%2020260402163952.png)
 
 ## Test 7.2 — Distribution services
 
@@ -25,7 +25,7 @@ docker service ps prod_php --no-trunc | head -5
 
 **Attendu** : Nginx/PHP sur différents workers.
 
-![[Pasted image 20260402164022.png]]
+![Distribution des services](images/Phase%207%20Screen/Pasted%20image%2020260402164022.png)
 
 ## Test 7.3 — Nginx + PHP
 
@@ -39,7 +39,7 @@ curl -I http://192.168.10.10
 **Attendu** : `<h1>Docker Swarm OK</h1>`, `HTTP/1.1 200`.
 ```
 
-![[Pasted image 20260402164254.png]]
+![Nginx et PHP](images/Phase%207%20Screen/Pasted%20image%2020260402164254.png)
 ## Test 7.4 — Registry
 
 ```bash
@@ -48,7 +48,7 @@ curl -s http://192.168.10.10:5000/v2/
 ```
 
 **Attendu** : `{}`
-![[Pasted image 20260402164331.png]]
+![Registry](images/Phase%207%20Screen/Pasted%20image%2020260402164331.png)
 ## Test 7.5 — Code-server
 
 ```bash
@@ -57,7 +57,7 @@ curl -I http://192.168.10.10:8443
 ```
 
 **Attendu** : `HTTP/1.1 401 Unauthorized`
-![[Pasted image 20260402164428.png]]
+![Code-server](images/Phase%207%20Screen/Pasted%20image%2020260402164428.png)
 ## Test 7.6 — MariaDB
 
 ```bash
@@ -66,7 +66,7 @@ docker service logs prod_mariadb --tail 5
 ```
 
 **Attendu** : `mysqld: ready for connections`.
-![[Pasted image 20260402164503.png]]
+![MariaDB](images/Phase%207%20Screen/Pasted%20image%2020260402164503.png)
 ## Test 7.7 — Volumes NFS
 
 ```bash
@@ -76,7 +76,7 @@ docker volume inspect prod_mariadb_data | grep -A 5 "DriverOpts"
 ```
 
 **Attendu** : `type: nfs`, `device: ":/srv/nfs/mariadb"`
-![[Pasted image 20260402164521.png]]
+![Volumes NFS](images/Phase%207%20Screen/Pasted%20image%2020260402164521.png)
 ## Test 7.8 — Réseau overlay
 
 ```bash
@@ -86,7 +86,7 @@ docker network inspect prod_backend --format '{{range .Containers}}{{.Name}} {{e
 ```
 
 **Attendu** : `prod_backend` overlay + noms conteneurs.
-![[Pasted image 20260402164543.png]]
+![Réseau overlay](images/Phase%207%20Screen/Pasted%20image%2020260402164543.png)
 ***
 
 ## Différence Phase 6 vs Phase 7

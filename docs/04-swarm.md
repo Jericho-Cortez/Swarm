@@ -24,10 +24,8 @@ To add a manager to this cluster:
 docker swarm join-token manager
 ```
 
-![[Pasted image 20260402151532.png]]
+![Initialisation du Swarm](images/Phase%204%20Screen/Pasted%20image%2020260402151532.png)
 **Copie la commande `docker swarm join --token ...`** — tu en auras besoin.
-
-docker swarm join --token SWMTKN-1-0zl6f6fh06jkmfu19msahpjr78r11rvxwbfoh4zn3ia3h845aq-9xogtbjtxo5x51toojk4bvwco 192.168.10.10:2377
 
 ***
 
@@ -47,7 +45,7 @@ docker swarm join --token SWMTKN-1-xxxxxxxx 192.168.10.10:2377
 
 **Token identique** pour les 2 workers.
 
-![[Pasted image 20260402151659.png]]
+![Jointure des workers](images/Phase%204%20Screen/Pasted%20image%2020260402151659.png)
 
 ***
 
@@ -68,7 +66,7 @@ xxxxx                         swarm-worker1       Ready               Active    
 xxxxx                         swarm-worker2       Ready               Active                          27.3.1
 ```
 
-![[Pasted image 20260402151740.png]]
+![Vérification du cluster](images/Phase%204%20Screen/Pasted%20image%2020260402151740.png)
 
 ***
 
@@ -98,7 +96,7 @@ docker node update --label-add type=control swarm-manager
 docker node inspect swarm-worker1 | grep -A 5 '"Labels"'
 ```
 
-![[Pasted image 20260402152053.png]]
+![Étiquetage des nœuds](images/Phase%204%20Screen/Pasted%20image%2020260402152053.png)
 
 ✅ swarm-worker1 → label "type=app" ajouté
 ✅ swarm-worker2 → label "type=app" ajouté  
@@ -118,5 +116,5 @@ docker network ls
 
 Tu dois voir le réseau `docker_gwbridge`.
 
-![[Pasted image 20260402152135.png]]
+![Réseau Swarm](images/Phase%204%20Screen/Pasted%20image%2020260402152135.png)
 

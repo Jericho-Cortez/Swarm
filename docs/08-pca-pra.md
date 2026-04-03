@@ -16,14 +16,14 @@
 echo "=== AVANT PANNE ==="
 docker service ps prod_nginx --no-trunc
 ```
-![[Pasted image 20260402165010.png]]
+![Avant Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165010.png)
 **Panne** :
 
 ```bash
 CONTAINER_ID=$(docker ps | grep nginx | awk '{print $1}' | head -1)
 docker rm -f $CONTAINER_ID
 ```
-![[Pasted image 20260402165022.png]]
+![Panne Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165022.png)
 **Après** (attends 30s) :
 
 ```bash
@@ -33,7 +33,7 @@ curl http://192.168.10.10
 ```
 
 **Attendu** : Swarm recrée le conteneur, site toujours accessible.
-![[Pasted image 20260402165048.png]]
+![Après Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165048.png)
 ***
 
 ## Test 8.2 — Arrêt forcé service Nginx
@@ -44,13 +44,13 @@ curl http://192.168.10.10
 echo "=== SERVICE NGINX AVANT ==="
 docker service ps prod_nginx
 ```
-![[Pasted image 20260402165106.png]]
+![Avant service Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165106.png)
 **Panne** :
 
 ```bash
 docker service update --force prod_nginx
 ```
-![[Pasted image 20260402165137.png]]
+![Panne service Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165137.png)
 **Après** :
 
 ```bash
@@ -60,7 +60,7 @@ curl http://192.168.10.10
 ```
 
 **Attendu** : Nouveau conteneur créé, service toujours UP.
-![[Pasted image 20260402165209.png]]
+![Après service Nginx](images/Phase%208%20Screen/Pasted%20image%2020260402165209.png)
 ***
 
 ## Test 8.3 — Panne d'un worker
@@ -72,7 +72,7 @@ echo "=== WORKERS AVANT ==="
 docker node ls
 docker service ps prod_nginx
 ```
-![[Pasted image 20260402165304.png]]
+![Avant worker](images/Phase%208%20Screen/Pasted%20image%2020260402165304.png)
 **Panne worker1** :
 **Sur worker1** : `sudo systemctl stop docker`
 
@@ -84,7 +84,7 @@ docker node ls
 docker service ps prod_nginx
 curl http://192.168.10.10
 ```
-![[Pasted image 20260402165358.png]]
+![Après worker](images/Phase%208%20Screen/Pasted%20image%2020260402165358.png)
 **Après** (attends 1min) :
 
 ```
@@ -110,7 +110,7 @@ docker exec $(docker ps | grep mariadb | awk '{print $1}') mariadb -u root -e "C
 docker service update --force prod_mariadb
 ```
 
-![[Pasted image 20260403092645.png]]
+![Persistance MariaDB](images/Phase%208%20Screen/Pasted%20image%2020260403092645.png)
 
 **Vérification persistance** :
 

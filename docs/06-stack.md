@@ -194,7 +194,7 @@ docker stack deploy -c docker-stack.yml prod
 docker stack services prod
 ```
 
-![[Pasted image 20260402162025.png]]
+![Déploiement de la stack](images/Phase%206%20Screen/Pasted%20image%2020260402162025.png)
 
 ## Statut services (après correction bind mounts)
 
@@ -220,7 +220,7 @@ curl http://192.168.10.10
 Hostname: swarm-worker1
 Date: 2026-04-02 16:xx:xx
 ```
-![[Pasted image 20260402160955.png]]
+![Nginx et PHP](images/Phase%206%20Screen/Pasted%20image%2020260402160955.png)
 
 ### 2. Registry
 
@@ -231,7 +231,7 @@ curl http://192.168.10.10:5000/v2/
 ```
 {}
 ```
-![[Pasted image 20260402161134.png]]
+![Registry](images/Phase%206%20Screen/Pasted%20image%2020260402161134.png)
 
 ### 3. Code-server
 
@@ -240,7 +240,7 @@ http://192.168.10.10:8443
 ```
 
 Login : `Admin123!`
-![[Pasted image 20260402161326.png]]
+*Capture code-server à ajouter : le fichier image n'est pas présent dans le dossier images.*
 ## Volumes NFS validés
 
 ```
@@ -268,9 +268,9 @@ docker volume inspect prod_mariadb_data
 - Registry (`curl :5000/v2/`)
 - Code-server login
 - `docker volume ls`
-- ![[Pasted image 20260402162412.png]]
+- ![Volumes NFS](images/Phase%206%20Screen/Pasted%20image%2020260402162412.png)
 - `docker volume inspect prod_mariadb_data`
-- ![[Pasted image 20260402162451.png]]
+- ![Volumes NFS détaillés](images/Phase%206%20Screen/Pasted%20image%2020260402162451.png)
 
 
 ## Point technique important
